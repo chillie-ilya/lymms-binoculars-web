@@ -11,7 +11,7 @@
 </head>
 <body id="body">
 	<img src="biome_map.bmp" id="main_img">
-	<input id="seed_input" min="0" step="1" placeholder="seed"><button onclick="show_seed();">show</button> <button onclick="clear_all();">clear</button>
+	<input id="seed_input" min="0" step="1" placeholder="seed" onkeydown="input_key_down(event);"><button onclick="show_seed();">show</button> <button onclick="clear_all();">clear</button>
 	<div class="tooltip" id="tooltip"></div>
 	<script>
 // One pixel on the biome map image is one chunk (512x512 ingame pixels/units)
@@ -206,5 +206,11 @@ function clear_all() {
 	}
 }
 
+function input_key_down(event) {
+	if(event.key === 'Enter') {
+		show_seed();
+	}
+}
+		
 	</script>
 </body></html>
