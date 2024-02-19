@@ -102,10 +102,10 @@ function calc_seed() {
 		end_marker = false
 		for (let attempt = 0; attempt < 1000; attempt++) {
 			y = lcm_poro(r08)
-			x = parseInt(Number(y * 4.656612875e-10 * world_chunk_length).toFixed(3))
+			x = parseInt(Number(y * 4.656612875e-10 * world_chunk_length))
 			y = lcm_poro(y)
 			r08 = y
-			y = parseInt(Number(r08 * 4.656612875e-10 * world_chunk_height).toFixed(3))
+			y = parseInt(Number(r08 * 4.656612875e-10 * world_chunk_height))
 			if (-1 < x && -1 < y && x < world_chunk_length && y < world_chunk_height) {
 				r = r08
 				has_background = has_cave_background(x, y)
