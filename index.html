@@ -166,6 +166,20 @@ function show_seed() {
 	}
 	for (let pos = 0; pos < 5; pos++) {
 		coords = seed_positions[pos]
+		overlaps = [] // 239847392
+		for (let o_pos = 0; o_pos < 5; o_pos++) {
+			if (o_pos === pos) {
+				continue
+		}
+			o_coords = seed_positions[o_pos]
+			if (coords[0] === o_coords[0] && coords[1] === o_coords[1]) {
+				overlaps.push(o_pos+1)
+			}
+		}
+		if (overlaps.length > 0 && pos >= overlaps[0]) {
+			continue
+		}
+		coords = seed_positions[pos]
 		game_x_e = coords[0]
 		game_x = game_x_e - 35840
 		game_x_w = game_x - 35840
@@ -173,7 +187,8 @@ function show_seed() {
 		center = `${game_x}, ${game_y}`
 		east = `${game_x_e}, ${game_y}`
 		west = `${game_x_w}, ${game_y}`
-		line = `<br><span class="click_span">${pos+1} Center: ${center}\n`
+		text_position = (overlaps.length === 0) ? pos+1 : `${pos+1},&nbsp;${overlaps.join(",&nbsp;")}`
+		line = `<br><span class="click_span">${text_position} Center: ${center}\n`
 		line += `East: ${east}\n`
 		if (pos < 4) {
 			line += `West: ${west}</span>`
@@ -213,6 +228,11 @@ function input_key_down(event) {
 		show_seed();
 	}
 }
-		
+
+document.addEventListener("keydown", (event) => {
+	if (event.keyCode === 13) {
+		show_seed();
+	}
+})		
 	</script>
 </body></html>
