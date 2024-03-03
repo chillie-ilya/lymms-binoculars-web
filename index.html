@@ -1,17 +1,41 @@
 <html>
 <head>
+<title>
+	Lymm's binoculars web
+</title>
+<meta name="description" content="Lymm's binoculars web, a web tool for Noita eye message coordinates.">
+<meta name="robots" content="index, follow" />
+
 <style>
 	img {position: relative;}
 	div.pin {position: absolute; width: 5px; height: 5px; outline: 1px red solid; border-radius: 5px;}
 	.tooltip {position: absolute; display: none; padding: 5px; background-color: #000; color: #fff;	font-size: 12px;}
 	span.click_span {background-color: #000000ab; color: #fff;}
 	input#seed_input, input#seed_input ~ button {vertical-align: top; margin-left:10px}
-
-</style>	
+	div#main_div {display:inline-block; vertical-align: top; margin-top: 20px;}
+	h1 {display:none;}
+</style>
 </head>
 <body id="body">
+	<h1>Lymm's binoculars web</h1>
 	<img src="biome_map.bmp" id="main_img">
-	<input id="seed_input" min="0" step="1" placeholder="seed" onkeydown="input_key_down(event);"><button onclick="show_seed();">show</button> <button onclick="clear_all();">clear</button>
+	<div id="main_div">
+		<input id="seed_input" min="0" step="1" placeholder="Enter world seed" onkeydown="input_key_down(event);">
+		<button onclick="show_seed();">show</button>&nbsp;
+		<button onclick="clear_all();">clear</button>
+		<ul>
+			<li><a href="https://youtu.be/ctmmguuF1e8?t=75">Usage guide</a> (by FuryForged )</li>
+			<li>Noita wiki <a href="https://noita.wiki.gg/wiki/Eye_Messages">eye messages</a> article</li>
+			<li>Project <a href="https://github.com/chillie-ilya/lymms-binoculars-web">github page</a></li>
+			<li>Reminder:<ul>
+				<li>messages are found only in closest <a href="https://noita.wiki.gg/wiki/Parallel_Worlds">parallel worlds</a> (East 1 and West 1)</li>
+				<li>message #5 is only in the East PW</li>
+				<li>messages are displayed after "Entered East/West X" is triggered (<u>every</u> time you load the game)</li>
+				<li>if 2 or more messages have the same coordinates, only one of them is displayed</li>
+			</ul>
+			</li>
+		</ul>
+	</div>
 	<div class="tooltip" id="tooltip"></div>
 	<script>
 // based on https://gitlab.com/realgonzogames/lymms-binoculars 
